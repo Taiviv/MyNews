@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">MyNews</string>
+
+    <!-- Searchable -->
+    <string name="begin_date">Begin date</string>
+    <string name="end_date">End date</string>
+    <string name="checkbox1">Culture</string>
+    <string name="checkbox2">Environement</string>
+    <string name="checkbox3">Foreign</string>
+    <string name="checkbox4">Politics</string>
+    <string name="checkbox5">Sports</string>
+    <string name="checkbox6">Technology</string>
+    <string name="search_button">SEARCH</string>
+    <string name="search_hint">Search query term</string>
+
+
+    <!-- Option menus title -->
+    <string name="image_description">MyNews image</string>
+
+    <!-- Used in NavigationDrawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Option menus title -->
+    <string name="research">Search</string>
+    <string name="notifications">Notifications</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
+    <string name="configurations">Configurations</string>
+
+    <!-- Notification page -->
+    <string name="notification">Enable notifications (once per day)</string>
+
+    <!-- Notification placeholder -->
+    <string name="test_notification">A test notification!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

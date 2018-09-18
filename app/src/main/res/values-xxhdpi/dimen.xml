@@ -1,0 +1,22 @@
+<resources>
+    <!-- TextViews -->
+    <dimen name="size_tab_title">50sp</dimen>
+    <dimen name="padding_tab_title">40dip</dimen>
+    
+    <dimen name="size_title">25sp</dimen>
+    <dimen name="size_synopsis">30sp</dimen>
+
+    <!-- Images -->
+    <dimen name="size_image_height">100dip</dimen>
+    <dimen name="size_image_width">@dimen/size_image_height</dimen>
+
+    <!-- margin / padding -->
+    <dimen name="margin">12dp</dimen>
+    <dimen name="padding">12dp</dimen>
+
+    <!-- navigation header -->
+    <dimen name="nav_header_heigth">190dp</dimen>
+
+    <!-- layout size -->
+    <dimen name="layout_height">68dip</dimen>
+</resources>
