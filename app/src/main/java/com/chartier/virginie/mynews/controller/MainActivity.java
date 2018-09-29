@@ -1,7 +1,6 @@
 package com.chartier.virginie.mynews.controller;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.chartier.virginie.mynews.R;
+import com.chartier.virginie.mynews.utils.Helper;
 import com.chartier.virginie.mynews.view.PageAdapter;
 
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
-
+    private Helper mHelper = new Helper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            //Open browser
+            case R.id.param_help:
+                mHelper.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * Ever item perform a new action
      **/
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         switch (id) {
@@ -106,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.activity_main_drawer_notifications:
                 launchNotificationsActivity();
+                break;
+            case R.id.activity_main_drawer_help:
+                mHelper.openActivityAsBrowser("https://www.google.com", this, WebViewActivity.class);
                 break;
             default:
                 break;

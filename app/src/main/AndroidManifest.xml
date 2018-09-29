@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chartier.virginie.mynews">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_custom"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.MainActivity"
+        <activity
+            android:name=".controller.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,13 +20,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".controller.SearchActivity"
-                  android:parentActivityName=".controller.MainActivity"
-            android:label="Recherche"></activity>
-        <activity android:name=".controller.NotificationActivity"
-                  android:parentActivityName=".controller.MainActivity"
-            android:label="Notifications"></activity>
+        <activity
+            android:name=".controller.SearchActivity"
+            android:label="Recherche"
+            android:parentActivityName=".controller.MainActivity" />
+        <activity
+            android:name=".controller.NotificationActivity"
+            android:label="Notifications"
+            android:parentActivityName=".controller.MainActivity" />
+        <activity
+            android:name=".controller.SearchActivityList"
+            android:label="Articles"
+            android:parentActivityName=".controller.SearchActivity" />
+        <activity
+            android:name=".controller.WebViewActivity"
+            android:label="WebView" />
     </application>
 
 </manifest>

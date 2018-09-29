@@ -4,15 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.chartier.virginie.mynews.fragments.FragmentBusiness;
-import com.chartier.virginie.mynews.fragments.FragmentMostPopular;
-import com.chartier.virginie.mynews.fragments.FragmentTopStories;
+import com.chartier.virginie.mynews.fragments.ArticleFragment;
 
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
 
     private String tabTitle[] = {"TOP STORIES", "MOST POPULAR", "BUSINESS",};
+    public static final String[] topStoriesSection = {"home", "", "business"};
 
 
     // Default Constructor
@@ -23,23 +22,14 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return tabTitle.length;
+        return 3;
     }
 
 
     // Depend the position we can switch the fragment placeholder
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return FragmentTopStories.newInstance(position);
-            case 1:
-                return  FragmentMostPopular.newInstance(position);
-            case 2:
-                return  FragmentBusiness.newInstance(position);
-            default:
-            return null;
-        }
+        return ArticleFragment.newInstance(position);
     }
 
     // Define the Tab title
