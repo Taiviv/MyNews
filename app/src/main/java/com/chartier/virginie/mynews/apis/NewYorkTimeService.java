@@ -29,7 +29,6 @@ public interface NewYorkTimeService {
     @GET("topstories/v2/{section}.json?api-key=" + ApiKey)
     Observable<TopStories> getTopStories(@Path("section") String section);
 
-
 }
 
 

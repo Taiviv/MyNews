@@ -55,8 +55,8 @@ public class ArticleFragment extends Fragment {
 
     @BindView(R.id.fragment_article_textview) TextView titleTextView;
     @BindView(R.id.recyclerview_layout) RecyclerView mRecyclerView;
+    @BindView(R.id.frag_swipe_layout) SwipeRefreshLayout mRefreshLayout;
     @BindView(R.id.activity_main_progress_bar) ProgressBar mProgressBar;
-
 
 
     // Required empty public constructor
@@ -97,12 +97,15 @@ public class ArticleFragment extends Fragment {
 
         //A progress bar is loaded and setted
         this.mHttpRequest.progressBarHandler(mProgressBar, getContext());
-        //Call the recyclerView builder method
+        //Call the recyclerView method
         this.configureRecyclerView();
         this.executeTopStoriesHttpRequest();
+        //It's possible to refresh the Uri api on vertical swipe from the top to the bottom
+        this.configureSwipeRefreshLayout();
 
         return view;
     }
+
 
     //This method called for better performances
     @Override
@@ -181,6 +184,17 @@ public class ArticleFragment extends Fragment {
     // ------------------
     //  UPDATE UI
     // ------------------
+
+    //This method executes the http request When the screen is swipe
+    private void configureSwipeRefreshLayout() {
+        this.mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                executeTopStoriesHttpRequest();
+
+            }
+        });
+    }
 
 
     //This method Update the UI from the recycler view with the adapter
