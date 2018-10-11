@@ -8,20 +8,19 @@ import java.util.List;
 /**
  * Created by Virginie Chartier alias Taiviv on 16/09/2018.
  */
-public class TopStories {
+public class MostPopular {
     @SerializedName("results")
     @Expose
-    private List<TopStoriesResult> results = null;
+    private List<MostPopularResult> results = null;
 
-    public List<TopStoriesResult> getResults() {
+    public List<MostPopularResult> getResults() {
         return results;
     }
 
-    public void setResults(List<TopStoriesResult> results) {
+    public void setResults(List<MostPopularResult> results) {
         this.results = results;
     }
 
+    }
 
-
-}
 

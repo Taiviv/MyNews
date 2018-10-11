@@ -17,10 +17,8 @@ public class WebViewActivity extends AppCompatActivity {
 
     public static final String EXTRA_URL = "EXTRA_URL";
 
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.web_view)
-    WebView mWebView;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.web_view) WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

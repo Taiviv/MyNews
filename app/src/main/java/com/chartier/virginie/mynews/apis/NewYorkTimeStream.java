@@ -1,5 +1,6 @@
 package com.chartier.virginie.mynews.apis;
 
+import com.chartier.virginie.mynews.model.MostPopular;
 import com.chartier.virginie.mynews.model.TopStories;
 
 import java.util.concurrent.TimeUnit;
@@ -25,4 +26,15 @@ public class NewYorkTimeStream {
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
     }
+
+
+    //Create observable for MostPopular
+    public static Observable<MostPopular> streamFetchMostPopular() {
+        NewYorkTimeService newYorkTimeService2 = NewYorkTimeService.retrofit.create(NewYorkTimeService.class);
+        return newYorkTimeService2.getMostPopular()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .timeout(10, TimeUnit.SECONDS);
+    }
+
 }

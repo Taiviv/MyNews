@@ -1,6 +1,7 @@
 package com.chartier.virginie.mynews.controller;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * Ever item perform a new action
      **/
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
         switch (id) {
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 launchNotificationsActivity();
                 break;
             case R.id.activity_main_drawer_help:
-                mHelper.openActivityAsBrowser("https://www.google.com", this, WebViewActivity.class);
+                mHelper.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
                 break;
             default:
                 break;
@@ -140,11 +141,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     // ---------------------
     // CONFIGURATION
     // ---------------------
-
 
     // This method handle the toolbar layout and display it in the actionbar
     private void configureToolbar() {

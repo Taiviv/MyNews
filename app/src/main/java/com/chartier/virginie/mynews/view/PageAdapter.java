@@ -6,7 +6,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.chartier.virginie.mynews.fragments.ArticleFragment;
 
-
+/**
+ * Created by Virginie Chartier alias Taiviv on 12/09/2018.
+ */
 public class PageAdapter extends FragmentStatePagerAdapter {
 
 

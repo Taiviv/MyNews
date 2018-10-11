@@ -18,10 +18,12 @@ import com.bumptech.glide.Glide;
 import com.chartier.virginie.mynews.R;
 import com.chartier.virginie.mynews.apis.NewYorkTimeStream;
 import com.chartier.virginie.mynews.controller.WebViewActivity;
+import com.chartier.virginie.mynews.model.MostPopular;
+import com.chartier.virginie.mynews.model.ArticleItem;
 import com.chartier.virginie.mynews.model.TopStories;
 import com.chartier.virginie.mynews.utils.Helper;
 import com.chartier.virginie.mynews.utils.HttpRequest;
-import com.chartier.virginie.mynews.view.RecyclerViewArticle;
+import com.chartier.virginie.mynews.view.ArticleAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
+import retrofit2.http.Url;
 
 import static com.chartier.virginie.mynews.view.PageAdapter.topStoriesSection;
 
@@ -44,9 +47,10 @@ public class ArticleFragment extends Fragment {
     public static final int TOP_STORIES_POSITION = 0;
     public static final int MOST_POPULAR_POSITION = 1;
     public static final int BUSINESS_POSITION = 2;
-    public List<TopStories.Resultum> mTopStoriesArray = new ArrayList<>();
+    public List<ArticleItem> mTopStoriesArray = new ArrayList<>();
+    //public List<ArticleItem> mMostPopularList = new ArrayList<>();
     private Disposable mDisposable;
-    private RecyclerViewArticle mAdapter;
+    private ArticleAdapter mAdapter;
     private Helper mHelper = new Helper();
     private HttpRequest mHttpRequest = new HttpRequest();
 
@@ -85,21 +89,21 @@ public class ArticleFragment extends Fragment {
         ButterKnife.bind(this,view);
         //We get the index position of the viewPager
         int position = getArguments().getInt(KEY_POSITION);
-        if (position == TOP_STORIES_POSITION){
-            titleTextView.setText("Top Stories");
+        switch (position){
+            case TOP_STORIES_POSITION :
+                executeTopStoriesHttpRequest();
+                break;
+            case MOST_POPULAR_POSITION :
+                executeMostPopularHttpRequest();
+                break;
+            case BUSINESS_POSITION :
+                executeBusinessHttpRequest();
+                break;
         }
-        if (position == MOST_POPULAR_POSITION){
-            titleTextView.setText("Most Popular");
-        }
-        if (position == BUSINESS_POSITION){
-            titleTextView.setText("Business");
-        }
-
         //A progress bar is loaded and setted
         this.mHttpRequest.progressBarHandler(mProgressBar, getContext());
         //Call the recyclerView method
         this.configureRecyclerView();
-        this.executeTopStoriesHttpRequest();
         //It's possible to refresh the Uri api on vertical swipe from the top to the bottom
         this.configureSwipeRefreshLayout();
 
@@ -122,7 +126,7 @@ public class ArticleFragment extends Fragment {
     //This method configure the recyclerView set up
     private void configureRecyclerView() {
         //Calling the adapter
-        this.mAdapter = new RecyclerViewArticle(mTopStoriesArray, Glide.with(this));
+        this.mAdapter = new ArticleAdapter(mTopStoriesArray,/*mMostPopularList,*/Glide.with(this));
         //Set them with natives methods
         this.mRecyclerView.setHasFixedSize(true);
         this.mRecyclerView.setAdapter(mAdapter);
@@ -134,10 +138,11 @@ public class ArticleFragment extends Fragment {
 
     //This method used to open a web view directly in the app, not by default application
     private void displayWebView() {
-        this.mAdapter.setOnItemClickListener(new RecyclerViewArticle.OnItemClickListener() {
+        this.mAdapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                mHelper.openActivityAsBrowser(mTopStoriesArray.get(position).getUrl(), getContext(), WebViewActivity.class);
+                mHelper.openActivityAsBrowser(mTopStoriesArray.toString(), getContext(), WebViewActivity.class);
+                //mHelper.openActivityAsBrowser(mMostPopularList.toString(), getContext(), WebViewActivity.class);
             }
         });
     }
@@ -147,7 +152,7 @@ public class ArticleFragment extends Fragment {
     // HTTP (RxJAVA)
     // -------------------
 
-    //This method handle the Http rest request  takes a model object as parameter and display a result
+    //This methods handle the Http rest request takes a model object as parameter and display a result
     public void executeTopStoriesHttpRequest() {
         this.mHttpRequest.updateUIWhenStartingHTTPRequest(mProgressBar);
 
@@ -157,7 +162,7 @@ public class ArticleFragment extends Fragment {
                     @Override
                     public void onNext(TopStories topStoriesItems) {
                         Log.d("TopStories Tag", "On Next");
-                        upDateTopStoriesUI(topStoriesItems);
+                        updateRecyclerUI(topStoriesItems.getResults());
                     }
 
                     @Override
@@ -172,6 +177,60 @@ public class ArticleFragment extends Fragment {
                     }
                 });
     }
+
+    private void executeMostPopularHttpRequest() {
+        this.mHttpRequest.updateUIWhenStartingHTTPRequest(mProgressBar);
+
+        this.mDisposable = NewYorkTimeStream.streamFetchMostPopular()
+                .subscribeWith(new DisposableObserver<MostPopular>() {
+
+                    @Override
+                    public void onNext(MostPopular mostPopularItems) {
+                        Log.d("Most Popular", "On Next");
+                        updateRecyclerUI(mostPopularItems.getResults());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("Most Popular", "On Error" + Log.getStackTraceString(e));
+                        mHttpRequest.internetDisable(mProgressBar, getString(R.string.no_internet), getContext());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d("Most Popular", "On Complete !");
+                    }
+                });
+    }
+
+
+    public void executeBusinessHttpRequest() {
+        this.mHttpRequest.updateUIWhenStartingHTTPRequest(mProgressBar);
+
+        this.mDisposable = NewYorkTimeStream.streamFetchTopStories(topStoriesSection[2])
+                .subscribeWith(new DisposableObserver<TopStories>() {
+
+
+                    @Override
+                    public void onNext(TopStories topStoriesItems) {
+                        Log.d("Business Tag", "On Next");
+                        updateRecyclerUI(topStoriesItems.getResults());
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("Business Tag", "On Error" + Log.getStackTraceString(e).toUpperCase());
+                        mHttpRequest.internetDisable(mProgressBar, getString(R.string.no_internet), getContext());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d("Business Tag", "On Complete !");
+                    }
+                });
+    }
+
 
 
     //Dispose subscription
@@ -190,22 +249,31 @@ public class ArticleFragment extends Fragment {
         this.mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                executeTopStoriesHttpRequest();
-
+                int position = getArguments().getInt(KEY_POSITION);
+                switch (position){
+                    case TOP_STORIES_POSITION :
+                        executeTopStoriesHttpRequest();
+                        break;
+                    case MOST_POPULAR_POSITION :
+                        executeMostPopularHttpRequest();
+                        break;
+                    case BUSINESS_POSITION :
+                        executeBusinessHttpRequest();
+                        break;
+                }
             }
         });
     }
 
 
-    //This method Update the UI from the recycler view with the adapter
-    private void upDateTopStoriesUI(TopStories topStories) {
+    //This methods Update the UI from the recycler view with the adapter
+    private void updateRecyclerUI(List<? extends ArticleItem> articleItems) {
+        this.mHttpRequest.updateUIWhenStopingHTTPRequest(mRefreshLayout, mProgressBar);
         this.mTopStoriesArray.clear();
-        this.mTopStoriesArray.addAll(topStories.getResults());
+        this.mTopStoriesArray.addAll(articleItems);
         this.mAdapter.notifyDataSetChanged();
     }
 }
-
-
 
 
 

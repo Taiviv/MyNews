@@ -1,6 +1,7 @@
 package com.chartier.virginie.mynews.apis;
 
 
+import com.chartier.virginie.mynews.model.MostPopular;
 import com.chartier.virginie.mynews.model.TopStories;
 
 import io.reactivex.Observable;
@@ -25,9 +26,13 @@ public interface NewYorkTimeService {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build();
 
-    // Top Stories API
+    //Top Stories API
     @GET("topstories/v2/{section}.json?api-key=" + ApiKey)
     Observable<TopStories> getTopStories(@Path("section") String section);
+
+    //Most Popular API
+    @GET("mostpopular/v2/mostemailed/all-sections/1.json?api-key=" + ApiKey)
+    Observable<MostPopular> getMostPopular();
 
 }
 
