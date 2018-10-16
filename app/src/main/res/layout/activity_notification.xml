@@ -24,7 +24,7 @@
         style="@style/MainStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/notifications"
+        android:text="@string/switch_notifications"
         android:textSize="14sp"
         android:theme="@style/SCBSwitch"
         tools:checked="false"/>

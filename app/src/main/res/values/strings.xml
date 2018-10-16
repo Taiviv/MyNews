@@ -12,7 +12,8 @@
     <string name="checkbox6">Technology</string>
     <string name="search_button">SEARCH</string>
     <string name="search_hint">Search query term</string>
-    <string name="query_error">You have to edit a query term search!!</string>
+    <string name="query_error">You must edit a search by query term !</string>
+    <string name="box_unchecked">You must select one box !</string>
 
 
     <!-- Option menus title -->
@@ -30,7 +31,7 @@
     <string name="configurations">Configurations</string>
 
     <!-- Notification page -->
-    <string name="notification">Enable notifications (once per day)</string>
+    <string name="switch_notifications">Enable notifications (once per day)</string>
 
     <!-- Http requests -->
     <string name="no_internet">NO INTERNET CONNECTION!

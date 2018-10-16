@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -44,8 +46,7 @@
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/colorPrimary</item>
         <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">#A9E2F3
-        </item>
+        <item name="colorSwitchThumbNormal">#A9E2F3</item>
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">#000000
         </item>

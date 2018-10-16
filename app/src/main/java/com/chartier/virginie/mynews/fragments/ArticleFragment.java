@@ -48,7 +48,6 @@ public class ArticleFragment extends Fragment {
     public static final int MOST_POPULAR_POSITION = 1;
     public static final int BUSINESS_POSITION = 2;
     public List<ArticleItem> mTopStoriesArray = new ArrayList<>();
-    //public List<ArticleItem> mMostPopularList = new ArrayList<>();
     private Disposable mDisposable;
     private ArticleAdapter mAdapter;
     private Helper mHelper = new Helper();
@@ -126,7 +125,7 @@ public class ArticleFragment extends Fragment {
     //This method configure the recyclerView set up
     private void configureRecyclerView() {
         //Calling the adapter
-        this.mAdapter = new ArticleAdapter(mTopStoriesArray,/*mMostPopularList,*/Glide.with(this));
+        this.mAdapter = new ArticleAdapter(mTopStoriesArray,Glide.with(this));
         //Set them with natives methods
         this.mRecyclerView.setHasFixedSize(true);
         this.mRecyclerView.setAdapter(mAdapter);
@@ -142,7 +141,6 @@ public class ArticleFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
                 mHelper.openActivityAsBrowser(mTopStoriesArray.toString(), getContext(), WebViewActivity.class);
-                //mHelper.openActivityAsBrowser(mMostPopularList.toString(), getContext(), WebViewActivity.class);
             }
         });
     }
@@ -186,7 +184,7 @@ public class ArticleFragment extends Fragment {
 
                     @Override
                     public void onNext(MostPopular mostPopularItems) {
-                        Log.d("Most Popular", "On Next");
+                        Log.d("Most Popular", "On Next" + mostPopularItems.getResults().size());
                         updateRecyclerUI(mostPopularItems.getResults());
                     }
 
@@ -266,7 +264,7 @@ public class ArticleFragment extends Fragment {
     }
 
 
-    //This methods Update the UI from the recycler view with the adapter
+    //This method Update the UI from the recycler view with the adapter
     private void updateRecyclerUI(List<? extends ArticleItem> articleItems) {
         this.mHttpRequest.updateUIWhenStopingHTTPRequest(mRefreshLayout, mProgressBar);
         this.mTopStoriesArray.clear();

@@ -19,15 +19,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ItemViewHolder>{
 
     // FOR DATA
 
-    private List<ArticleItem> mTopStoriesResult;
-    //private List<ArticleItem> mMostPopularResult;
+    private List<ArticleItem> mArticles;
     private OnItemClickListener mListener;
     private RequestManager mGlide;
 
 
-    public ArticleAdapter(List<ArticleItem> topStoriesResult,/*List<ArticleItem>mostPopularResult,*/RequestManager glide) {
-        mTopStoriesResult = topStoriesResult;
-        //mMostPopularResult = mostPopularResult;
+    public ArticleAdapter(List<ArticleItem> topStoriesResult,RequestManager glide) {
+        mArticles = topStoriesResult;
         mGlide = glide;
     }
 
@@ -42,16 +40,16 @@ public class ArticleAdapter extends RecyclerView.Adapter<ItemViewHolder>{
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        holder.updateWithTopStories(this.mTopStoriesResult.get(position), mGlide);
-        //holder.updateWithMostPopular(this.mMostPopularResult.get(position), mGlide);
+        holder.updateWithArticles(this.mArticles.get(position), mGlide);
+
     }
 
 
     @Override
     public int getItemCount() {
 
-        return mTopStoriesResult.size();
-        //return mMostPopularResult.size();
+        return mArticles.size();
+
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

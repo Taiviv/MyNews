@@ -18,12 +18,10 @@ import butterknife.ButterKnife;
  * Created by Virginie Chartier alias Taiviv on 08/10/2018.
  */
 public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    @BindView(R.id.item_layout)
-    RelativeLayout mLayout;
-    @BindView(R.id.item_title)
-    TextView mTextView;
-    @BindView(R.id.item_image)
-    ImageView mImageView;
+
+    @BindView(R.id.item_layout) RelativeLayout mLayout;
+    @BindView(R.id.item_title) TextView mTextView;
+    @BindView(R.id.item_image) ImageView mImageView;
     @BindView(R.id.item_date) TextView mDateView;
     @BindView(R.id.item_summary) TextView mSummaryView;
     Helper mFormater = new Helper();
@@ -50,7 +48,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
 
-    public void updateWithTopStories(ArticleItem result, RequestManager glide) {
+    public void updateWithArticles(ArticleItem result, RequestManager glide) {
 
         this.mTextView.setText(result.getSection());
         this.mDateView.setText(mFormater.getItemArticleFormatedDate((result.getPublishedDate())));
@@ -62,16 +60,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     }
 
-
-    public void updateWithMostPopular(ArticleItem result, RequestManager glide) {
-
-        this.mTextView.setText(result.getSection());
-        this.mDateView.setText(mFormater.getItemArticleFormatedDate((result.getPublishedDate())));
-        this.mSummaryView.setText(result.getTitle());
-        if (result.getUrlImage() != null){
-            glide.load(result.getUrlImage()).into(mImageView);
-        }
-    }
 
     @Override
     public void onClick(View v) {

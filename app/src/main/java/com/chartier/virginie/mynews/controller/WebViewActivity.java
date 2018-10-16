@@ -17,6 +17,8 @@ public class WebViewActivity extends AppCompatActivity {
 
     public static final String EXTRA_URL = "EXTRA_URL";
 
+    // FOR DESIGN
+
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.web_view) WebView mWebView;
 
@@ -45,7 +47,6 @@ public class WebViewActivity extends AppCompatActivity {
     private void WebViewReader() {
         String uri = getIntent().getStringExtra(EXTRA_URL);
         mWebView.loadUrl(uri);
-
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

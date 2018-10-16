@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import retrofit2.http.Url;
+
 /**
  * Created by Virginie Chartier alias Taiviv on 08/10/2018.
  */
@@ -36,8 +38,7 @@ public class MostPopularResult implements ArticleItem {
     @SerializedName("source")
     @Expose
     private String source;
-    @SerializedName("media")
-    @Expose
+
     private List<Media> media = null;
 
     public String getUrl() {

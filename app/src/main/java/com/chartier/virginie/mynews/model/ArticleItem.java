@@ -1,6 +1,5 @@
 package com.chartier.virginie.mynews.model;
 
-import java.util.List;
 
 /**
  * Created by Virginie Chartier alias Taiviv on 08/10/2018.
