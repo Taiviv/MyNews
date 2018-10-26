@@ -16,18 +16,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.chartier.virginie.mynews.R;
-import com.chartier.virginie.mynews.utils.Helper;
+import com.chartier.virginie.mynews.utils.NavigationUtils;
 import com.chartier.virginie.mynews.view.PageAdapter;
 
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    //FOR DESIGN
+    // FOR DESIGN
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
-    private Helper mHelper = new Helper();
+    private NavigationUtils mNavigationUtils = new NavigationUtils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             //Open browser
             case R.id.param_help:
-                mHelper.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
+                mNavigationUtils.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 launchNotificationsActivity();
                 break;
             case R.id.activity_main_drawer_help:
-                mHelper.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
+                mNavigationUtils.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
                 break;
             default:
                 break;

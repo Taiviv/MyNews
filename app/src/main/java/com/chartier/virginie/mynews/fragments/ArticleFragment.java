@@ -21,8 +21,8 @@ import com.chartier.virginie.mynews.controller.WebViewActivity;
 import com.chartier.virginie.mynews.model.MostPopular;
 import com.chartier.virginie.mynews.model.ArticleItem;
 import com.chartier.virginie.mynews.model.TopStories;
-import com.chartier.virginie.mynews.utils.Helper;
 import com.chartier.virginie.mynews.utils.HttpRequest;
+import com.chartier.virginie.mynews.utils.NavigationUtils;
 import com.chartier.virginie.mynews.view.ArticleAdapter;
 
 import java.util.ArrayList;
@@ -32,7 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
-import retrofit2.http.Url;
 
 import static com.chartier.virginie.mynews.view.PageAdapter.topStoriesSection;
 
@@ -50,7 +49,7 @@ public class ArticleFragment extends Fragment {
     public List<ArticleItem> mTopStoriesArray = new ArrayList<>();
     private Disposable mDisposable;
     private ArticleAdapter mAdapter;
-    private Helper mHelper = new Helper();
+    private NavigationUtils mNavigationUtils = new NavigationUtils();
     private HttpRequest mHttpRequest = new HttpRequest();
 
 
@@ -140,7 +139,7 @@ public class ArticleFragment extends Fragment {
         this.mAdapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                mHelper.openActivityAsBrowser(mTopStoriesArray.toString(), getContext(), WebViewActivity.class);
+                mNavigationUtils.openActivityAsBrowser(mTopStoriesArray.get(position).getUrl(),getContext(), WebViewActivity.class);
             }
         });
     }

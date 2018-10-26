@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.RequestManager;
 import com.chartier.virginie.mynews.R;
 import com.chartier.virginie.mynews.model.ArticleItem;
-import com.chartier.virginie.mynews.utils.Helper;
+import com.chartier.virginie.mynews.utils.DateUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +24,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @BindView(R.id.item_image) ImageView mImageView;
     @BindView(R.id.item_date) TextView mDateView;
     @BindView(R.id.item_summary) TextView mSummaryView;
-    Helper mFormater = new Helper();
+    DateUtils mFormater = new DateUtils();
 
 
 
