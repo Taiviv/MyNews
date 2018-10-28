@@ -33,7 +33,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
 
-    //This method calls the layout of the toolbar and fixes it in the action bar, then a return home function is displayed
+    // This method calls the layout of the toolbar and fixes it in the action bar, then a return home function is displayed
     private void configureToolbar() {
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -43,7 +43,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
 
-    //This method load and display an Uri into a web page view, the webView gets an Uri from an array object method
+    // This method load and display an Uri into a web page view, the webView gets an Uri from an array object method
     private void WebViewReader() {
         String uri = getIntent().getStringExtra(EXTRA_URL);
         mWebView.loadUrl(uri);

@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Virginie Chartier alias Taiviv on 03/10/2018.
  */
 public class Multimedia {
+    // Serialized JSON names
     @SerializedName("url")
     @Expose
     private String url;
@@ -30,6 +31,11 @@ public class Multimedia {
     @SerializedName("copyright")
     @Expose
     private String copyright;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public String getUrl() {
         return url;

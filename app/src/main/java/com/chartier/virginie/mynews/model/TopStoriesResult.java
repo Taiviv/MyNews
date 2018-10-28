@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class TopStoriesResult implements ArticleItem{
 
+    // Serialized JSON names
     @SerializedName("section")
     @Expose
     private String section;
@@ -49,6 +50,11 @@ public class TopStoriesResult implements ArticleItem{
     @SerializedName("multimedia")
     @Expose
     private List<Multimedia> multimedia = null;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public String getsection() {
         return section;

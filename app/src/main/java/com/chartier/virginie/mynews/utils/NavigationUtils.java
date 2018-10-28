@@ -8,6 +8,9 @@ import android.widget.CheckBox;
 
 import static com.chartier.virginie.mynews.controller.WebViewActivity.EXTRA_URL;
 
+/**
+ * Created by Virginie Chartier alias Taiviv on 26/10/2018.
+ */
 public class NavigationUtils {
 
     public NavigationUtils(){
@@ -18,7 +21,7 @@ public class NavigationUtils {
     // OPEN WEB BROWSER
     //-----------------------
 
-    //This method use to open a Uri thanks the WebViewer from the device
+    // This method use to open a Uri thanks the WebViewer from the device
     @Deprecated
     public void openWebBrowser(String url, Context context) {
         Uri uri = Uri.parse(url);
@@ -27,7 +30,7 @@ public class NavigationUtils {
     }
 
 
-    //This method start an activity by displaying a web content inside
+    // This method start an activity by displaying a web content inside
     public void openActivityAsBrowser(String url, Context context, Class aClass) {
         Intent intent2 = new Intent(context, aClass);
         intent2.putExtra(EXTRA_URL, url);
@@ -39,7 +42,7 @@ public class NavigationUtils {
     //  CHECKBOX INPUT
     //-----------------------
 
-    //This method Change color of all text boxes at once
+    // This methods Change color of all text boxes at once
     public void checkboxColorModifier(int color, CheckBox[] boxes) {
         for (CheckBox box : boxes) {
             box.setTextColor(color);
@@ -55,7 +58,5 @@ public class NavigationUtils {
             checkboxColorModifier(Color.BLACK, boxes);
             return false;
         }
-
     }
-
 }

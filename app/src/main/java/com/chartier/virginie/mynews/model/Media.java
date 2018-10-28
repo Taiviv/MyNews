@@ -9,9 +9,15 @@ import java.util.List;
  * Created by Virginie Chartier alias Taiviv on 03/10/2018.
  */
 public class Media {
+    // Serialized JSON name
     @SerializedName("media-metadata")
     @Expose
     private List<MediaMetadata> mediaMetadata = null;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public List<MediaMetadata> getMediaMetadata() {
         return mediaMetadata;

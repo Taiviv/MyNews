@@ -9,9 +9,15 @@ import java.util.List;
  * Created by Virginie Chartier alias Taiviv on 16/09/2018.
  */
 public class MostPopular {
+    // Serialized JSON name
     @SerializedName("results")
     @Expose
     private List<MostPopularResult> results = null;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public List<MostPopularResult> getResults() {
         return results;

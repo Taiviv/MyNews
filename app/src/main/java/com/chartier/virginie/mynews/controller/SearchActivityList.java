@@ -61,7 +61,7 @@ public class SearchActivityList extends AppCompatActivity {
     }
 
 
-    //This method calls the toolbar layout and fixed it on the action bar then a return home function is displayed.
+    // This method calls the toolbar layout and fixed it on the action bar then a return home function is displayed.
     private void configureToolbar() {
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -71,7 +71,7 @@ public class SearchActivityList extends AppCompatActivity {
     }
 
 
-    //This method called for better performances
+    // This method called for better performances
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -83,20 +83,20 @@ public class SearchActivityList extends AppCompatActivity {
     // CONFIGURATION
     // -----------------
 
-    //This method manages the recyclerView set up
+    // This method manages the recyclerView set up
     private void configureRecyclerView() {
-        //Calling the adapter
+        // Calling the adapter
         this.mSearchActivityAdapter = new SearchActivityAdapter(mDocArrayList, Glide.with(this));
-        //Set them with natives methods
+        // Set them with natives methods
         this.mRecyclerView.setHasFixedSize(true);
         this.mRecyclerView.setAdapter(mSearchActivityAdapter);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //When user click on an item a new activity is launched to display a webView
+        // When user click on an item a new activity is launched to display a webView
         this.displayWebView();
 
     }
 
-    //This method used to open a web view directly in the app, not by default application
+    // This method used to open a web view directly in the app, not by default application
     private void displayWebView() {
         this.mSearchActivityAdapter.setOnItemClickListener(new SearchActivityAdapter.OnItemClickListener() {
             @Override
@@ -112,13 +112,13 @@ public class SearchActivityList extends AppCompatActivity {
     // HTTP (RxJAVA)
     // -------------------
 
-    //This method handle the Http rest request takes a model object as parameter and display a result
+    // This method handle the Http rest request takes a model object as parameter and display a result
     private void executeSearchArticleHttpRequest() {
         this.mHttpRequest.updateUIWhenStartingHTTPRequest(mProgressBar);
-        //Get the array content to provide query to the http request
+        // Get the array content to provide query to the http request
         String[] mDataValues = getIntent().getStringArrayExtra(SEARCH_ARTICLE_VALUES);
 
-        //mDataValues[0] == query, mDataValues[1] == new_desk, mDataValues[2] == begin_date, mDataValues[3] == endDate
+        // mDataValues[0] == query, mDataValues[1] == new_desk, mDataValues[2] == begin_date, mDataValues[3] == endDate
         this.mDisposable = NewYorkTimeStream.streamFetchSearchArticle(mDataValues[0], "news_desk:(" + mDataValues[1] + ")", mDataValues[2], mDataValues[3])
                 .subscribeWith(new DisposableObserver<SearchArticle>() {
 
@@ -142,7 +142,7 @@ public class SearchActivityList extends AppCompatActivity {
                 });
     }
 
-    //Dispose subscription
+    // Dispose subscription
     private void disposeWhenDestroy() {
         if (this.mDisposable != null && !this.mDisposable.isDisposed())
             this.mDisposable.dispose();
@@ -154,7 +154,7 @@ public class SearchActivityList extends AppCompatActivity {
     //  UPDATE UI
     // ------------------
 
-    //This method executes the http request When the screen is swipe
+    // This method executes the http request When the screen is swipe
     private void configureSwipeRefreshLayout() {
         this.mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -164,7 +164,7 @@ public class SearchActivityList extends AppCompatActivity {
         });
     }
 
-    //This method Update the UI from the recycler view with the adapter
+    // This method Update the UI from the recycler view with the adapter
     private void upDateUISearchArticle(SearchArticle searchArticle) {
         this.mHttpRequest.updateUIWhenStopingHTTPRequest(mRefreshLayout, mProgressBar);
         this.mDocArrayList.clear();

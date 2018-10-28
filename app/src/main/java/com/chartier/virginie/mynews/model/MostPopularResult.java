@@ -11,6 +11,7 @@ import retrofit2.http.Url;
  * Created by Virginie Chartier alias Taiviv on 08/10/2018.
  */
 public class MostPopularResult implements ArticleItem {
+    // Serialized JSON names
     @SerializedName("url")
     @Expose
     private String url;
@@ -40,6 +41,11 @@ public class MostPopularResult implements ArticleItem {
     private String source;
 
     private List<Media> media = null;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public String getUrl() {
         return url;

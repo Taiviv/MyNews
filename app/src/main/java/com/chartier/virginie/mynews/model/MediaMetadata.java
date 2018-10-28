@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Virginie Chartier alias Taiviv on 03/10/2018.
  */
 public class MediaMetadata {
+    // Serialized JSON names
     @SerializedName("url")
     @Expose
     private String url;
@@ -19,6 +20,11 @@ public class MediaMetadata {
     @SerializedName("width")
     @Expose
     private Integer width;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public String getUrl() {
         return url;

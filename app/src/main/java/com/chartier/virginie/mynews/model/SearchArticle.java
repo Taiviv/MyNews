@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Virginie Chartier alias Taiviv on 12/10/2018.
  */
 public class SearchArticle {
-
+    // Serialized JSON names
     @SerializedName("status")
     @Expose
     private String status;
@@ -19,6 +19,11 @@ public class SearchArticle {
     @SerializedName("response")
     @Expose
     private Response response;
+
+
+    //-------------------
+    // GETTER & SETTER
+    //-------------------
 
     public String getStatus() {
         return status;
@@ -46,7 +51,7 @@ public class SearchArticle {
 
 
     public class Multimedium {
-
+        // Serialized JSON names
         @SerializedName("rank")
         @Expose
         private Integer rank;
@@ -77,6 +82,11 @@ public class SearchArticle {
         @SerializedName("crop_name")
         @Expose
         private Object cropName;
+
+
+        //-------------------
+        // GETTER & SETTER
+        //-------------------
 
         public Integer getRank() {
             return rank;
@@ -161,10 +171,15 @@ public class SearchArticle {
     }
 
     public class Response {
-
+        // Serialized JSON name
         @SerializedName("docs")
         @Expose
         private List<Doc> docs = null;
+
+
+        //-------------------
+        // GETTER & SETTER
+        //-------------------
 
         public List<Doc> getDocs() {
             return docs;
@@ -177,7 +192,7 @@ public class SearchArticle {
     }
 
     public class Doc {
-
+        // Serialized JSON names
         @SerializedName("web_url")
         @Expose
         private String webUrl;
@@ -202,6 +217,11 @@ public class SearchArticle {
         @SerializedName("score")
         @Expose
         private Float score;
+
+
+        //-------------------
+        // GETTER & SETTER
+        //-------------------
 
         public String getWebUrl() {
             return webUrl;

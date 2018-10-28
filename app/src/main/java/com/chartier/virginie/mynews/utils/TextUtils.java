@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Created by Virginie Chartier alias Taiviv on 26/10/2018.
+ */
 public class TextUtils {
 
     public TextUtils(){
@@ -21,16 +24,16 @@ public class TextUtils {
     //  QUERY TEXT INPUT
     //-----------------------
 
-    //This method handle the search text widget, before and after text change
+    // This method handle the search text widget, before and after text change
     public void displayErrorMessage(final TextInputLayout textInputLayout) {
         textInputLayout.getEditText().addTextChangedListener(new TextWatcher() {
-            //The text input set up an hint for the user
+            // The text input set up an hint for the user
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 textInputLayout.setHintEnabled(true);
             }
 
-            //When user type something the error alert is disabled
+            // When user type something the error alert is disabled
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 textInputLayout.setErrorEnabled(false);
@@ -44,7 +47,7 @@ public class TextUtils {
         });
     }
 
-    //This method check if the search query input is empty, and if yes an error message occur
+    // This method check if the search query input is empty, and if yes an error message occur
     public boolean queryInputIsEmpty(EditText searchQuery, TextInputLayout textInputLayout, CharSequence msg) {
         if (searchQuery.getText().toString().isEmpty()) {
             textInputLayout.setErrorEnabled(true);
@@ -58,11 +61,11 @@ public class TextUtils {
     }
 
 
-    //-----------------------
-    //  MESSAGE
-    //-----------------------
+    //--------------
+    // MESSAGE
+    //--------------
 
-    //This method handle SnackBar message
+    // This method handle SnackBar message
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void snackBarMessage(View view, int msg) {
         Snackbar snackbar = Snackbar.make(view, msg, Snackbar.LENGTH_LONG);
@@ -72,5 +75,4 @@ public class TextUtils {
         textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         snackbar.show();
     }
-
 }

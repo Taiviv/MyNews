@@ -53,7 +53,7 @@ public class ArticleFragment extends Fragment {
     private HttpRequest mHttpRequest = new HttpRequest();
 
 
-    //FOR DESIGN
+    // FOR DESIGN
 
     @BindView(R.id.fragment_article_textview) TextView titleTextView;
     @BindView(R.id.recyclerview_layout) RecyclerView mRecyclerView;
@@ -85,7 +85,7 @@ public class ArticleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_article, container, false);
         ButterKnife.bind(this,view);
-        //We get the index position of the viewPager
+        // We get the index position of the viewPager
         int position = getArguments().getInt(KEY_POSITION);
         switch (position){
             case TOP_STORIES_POSITION :
@@ -98,18 +98,18 @@ public class ArticleFragment extends Fragment {
                 executeBusinessHttpRequest();
                 break;
         }
-        //A progress bar is loaded and setted
+        // A progress bar is loaded and configured
         this.mHttpRequest.progressBarHandler(mProgressBar, getContext());
-        //Call the recyclerView method
+        // Call the recyclerView method
         this.configureRecyclerView();
-        //It's possible to refresh the Uri api on vertical swipe from the top to the bottom
+        // It's possible to refresh the Uri api on vertical swipe from the top to the bottom
         this.configureSwipeRefreshLayout();
 
         return view;
     }
 
 
-    //This method called for better performances
+    // This method called for better performances
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -121,20 +121,20 @@ public class ArticleFragment extends Fragment {
     // CONFIGURATION
     // -----------------
 
-    //This method configure the recyclerView set up
+    // This method configure the recyclerView set up
     private void configureRecyclerView() {
-        //Calling the adapter
+        // Calling the adapter
         this.mAdapter = new ArticleAdapter(mTopStoriesArray,Glide.with(this));
-        //Set them with natives methods
+        // Set them with natives methods
         this.mRecyclerView.setHasFixedSize(true);
         this.mRecyclerView.setAdapter(mAdapter);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //When user click on an item a new activity is launched to display a webView
+        // When user click on an item a new activity is launched to display a webView
         this.displayWebView();
     }
 
 
-    //This method used to open a web view directly in the app, not by default application
+    // This method used to open a web view directly in the app, not by default application
     private void displayWebView() {
         this.mAdapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
             @Override
@@ -149,7 +149,7 @@ public class ArticleFragment extends Fragment {
     // HTTP (RxJAVA)
     // -------------------
 
-    //This methods handle the Http rest request takes a model object as parameter and display a result
+    // This methods handle the Http rest request takes a model object as parameter and display a result
     public void executeTopStoriesHttpRequest() {
         this.mHttpRequest.updateUIWhenStartingHTTPRequest(mProgressBar);
 
@@ -230,7 +230,7 @@ public class ArticleFragment extends Fragment {
 
 
 
-    //Dispose subscription
+    // Dispose subscription
     private void disposeWhenDestroy() {
         if (this.mDisposable != null && !this.mDisposable.isDisposed())
             this.mDisposable.dispose();
@@ -241,7 +241,7 @@ public class ArticleFragment extends Fragment {
     //  UPDATE UI
     // ------------------
 
-    //This method executes the http request When the screen is swipe
+    // This method executes the http request When the screen is swipe
     private void configureSwipeRefreshLayout() {
         this.mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -263,7 +263,7 @@ public class ArticleFragment extends Fragment {
     }
 
 
-    //This method Update the UI from the recycler view with the adapter
+    // This method Update the UI from the recycler view with the adapter
     private void updateRecyclerUI(List<? extends ArticleItem> articleItems) {
         this.mHttpRequest.updateUIWhenStopingHTTPRequest(mRefreshLayout, mProgressBar);
         this.mTopStoriesArray.clear();

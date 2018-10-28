@@ -91,9 +91,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             //Open browser
             case R.id.param_help:
-                mNavigationUtils.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
+                mNavigationUtils.openActivityAsBrowser("https://help.nytimes.com/hc/en-us", this, WebViewActivity.class);
+                return true;
+            case R.id.param_about:
+                mNavigationUtils.openActivityAsBrowser("https://openclassrooms.com", this, WebViewActivity.class);
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -113,7 +117,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 launchNotificationsActivity();
                 break;
             case R.id.activity_main_drawer_help:
-                mNavigationUtils.openActivityAsBrowser("https://www.google.fr", this, WebViewActivity.class);
+                mNavigationUtils.openActivityAsBrowser("https://help.nytimes.com/hc/en-us", this, WebViewActivity.class);
+                break;
+            case R.id.activity_main_drawer_about:
+                mNavigationUtils.openActivityAsBrowser("https://openclassrooms.com", this, WebViewActivity.class);
                 break;
             default:
                 break;

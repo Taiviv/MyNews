@@ -5,6 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Created by Virginie Chartier alias Taiviv on 26/10/2018.
+ */
+
 public class DateUtils {
 
     public DateUtils() {
@@ -19,6 +23,13 @@ public class DateUtils {
     public String getItemArticleFormatedDate(String dateToChange) {
         String sub[] = dateToChange.substring(2, 10).split("-");
         return String.format("%s/%s/%s", sub[2], sub[1], sub[0]);
+    }
+
+
+    // This method handle the date string format for the notifications
+    public String getNotificationFormatDate(String dateToChange) {
+        String sub[] = dateToChange.substring(0, 10).split("-");
+        return String.format("%s%s%s", sub[0], sub[1], sub[2]);
     }
 
 
