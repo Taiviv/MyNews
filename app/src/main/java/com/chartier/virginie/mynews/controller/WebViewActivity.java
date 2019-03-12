@@ -27,9 +27,8 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
         ButterKnife.bind(this);
-
         configureToolbar();
-        WebViewReader();
+        loadUrlInWebview();
     }
 
 
@@ -44,7 +43,7 @@ public class WebViewActivity extends AppCompatActivity {
 
 
     // This method load and display an Uri into a web page view, the webView gets an Uri from an array object method
-    private void WebViewReader() {
+    private void loadUrlInWebview() {
         String uri = getIntent().getStringExtra(EXTRA_URL);
         mWebView.loadUrl(uri);
         mWebView.setWebViewClient(new WebViewClient() {

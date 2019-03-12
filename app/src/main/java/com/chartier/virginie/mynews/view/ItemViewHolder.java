@@ -25,6 +25,8 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @BindView(R.id.item_date) TextView mDateView;
     @BindView(R.id.item_summary) TextView mSummaryView;
     DateUtils mFormater = new DateUtils();
+    //Because an error du to Glide it 'is necessary to concat a base url
+    //String NytUri = "https://www.nytimes.com/";
 
 
 
@@ -56,10 +58,17 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         if (result.getUrlImage() != null){
             glide.load(result.getUrlImage()).into(mImageView);
         }
-
-
     }
 
+   /*public void updateWithSearchArticle(Doc searchArticle, RequestManager glide) {
+
+        this.mTextView.setText(searchArticle.getNewDesk());
+        if (searchArticle.getPublishedDate()!= null){
+            this.mDateView.setText(mFormater.getItemArticleFormatedDate(searchArticle.getPubDate()));}
+        this.mSummaryView.setText(searchArticle.getSnippet());
+        if((searchArticle.getMultimedia() != null) && (!searchArticle.getMultimedia().isEmpty()))
+            glide.load(NytUri+searchArticle.getMultimedia().get(0).getUrl()).into(this.mImageView);
+    }*/
 
     @Override
     public void onClick(View v) {

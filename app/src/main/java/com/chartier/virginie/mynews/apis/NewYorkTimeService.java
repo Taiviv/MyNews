@@ -48,6 +48,10 @@ public interface NewYorkTimeService {
                                                @Query("begin_date") String begin_date,
                                                @Query("end_date") String end_date);
 
+    // Notification Activity API
+    @GET("search/v2/articlesearch.json?" + SearchArticleFl + "&sort=newest&api-key=" + ApiKey)
+    Observable<SearchArticle> getNotification(@Query("q") String query,
+                                              @Query("fq") String news_desk);
 }
 
 

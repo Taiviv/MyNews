@@ -93,6 +93,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    // This method configure
     private void configureAndShowActivity() {
         String[] value = {mSearchQuery.getText().toString(), mDateUtils.getNewDesk(checkboxData),
                 mDateUtils.getBeginDate(mBeginDate.getText().toString()), mDateUtils.getEndDate(mEndDate.getText().toString())};

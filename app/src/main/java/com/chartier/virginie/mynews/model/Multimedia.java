@@ -31,6 +31,12 @@ public class Multimedia {
     @SerializedName("copyright")
     @Expose
     private String copyright;
+    @SerializedName("rank")
+    @Expose
+    private Integer rank;
+    @SerializedName("crop_name")
+    @Expose
+    private Object cropName;
 
 
     //-------------------
@@ -99,5 +105,21 @@ public class Multimedia {
 
     public void setCopyright(String copyright) {
         this.copyright = copyright;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    public Object getCropName() {
+        return cropName;
+    }
+
+    public void setCropName(Object cropName) {
+        this.cropName = cropName;
     }
 }

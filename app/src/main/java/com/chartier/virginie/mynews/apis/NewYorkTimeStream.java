@@ -46,4 +46,13 @@ public class NewYorkTimeStream {
                 .observeOn(AndroidSchedulers.mainThread())
                 .timeout(10, TimeUnit.SECONDS);
     }
+
+    // Create observable for Notifications
+    public static Observable<SearchArticle> streamFetchNotifications(String query, String news_desk) {
+        NewYorkTimeService newYorkTimeService3 = NewYorkTimeService.retrofit.create(NewYorkTimeService.class);
+        return newYorkTimeService3.getNotification(query, news_desk)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .timeout(10, TimeUnit.SECONDS);
+    }
 }

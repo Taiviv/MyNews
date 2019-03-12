@@ -12,7 +12,7 @@ public interface ArticleItem {
     String getSection();
     String getPublishedDate();
     String getUrl();
-
-
-       //TODO : rajouter les autres méthodes
+    String getWebUrl();
+    String getPubDate();
+    //TODO : rajouter les autres méthodes
 }

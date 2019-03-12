@@ -92,6 +92,7 @@ public class TopStoriesResult implements ArticleItem{
         return url;
     }
 
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -185,4 +186,15 @@ public class TopStoriesResult implements ArticleItem{
     public String getPublishedDate() {
         return publishedDate;
     }
+
+    @Override
+    public String getWebUrl() {
+        return null;
+    }
+
+    @Override
+    public String getPubDate() {
+        return null;
+    }
+
 }

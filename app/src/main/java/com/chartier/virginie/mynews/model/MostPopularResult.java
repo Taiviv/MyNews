@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import retrofit2.http.Url;
-
 /**
  * Created by Virginie Chartier alias Taiviv on 08/10/2018.
  */
@@ -151,6 +149,16 @@ public class MostPopularResult implements ArticleItem {
     @Override
     public String getPublishedDate() {
         return publishedDate;
+    }
+
+    @Override
+    public String getWebUrl() {
+        return null;
+    }
+
+    @Override
+    public String getPubDate() {
+        return null;
     }
 }
 

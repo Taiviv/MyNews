@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
 import com.chartier.virginie.mynews.R;
-import com.chartier.virginie.mynews.model.SearchArticle;
+import com.chartier.virginie.mynews.model.Doc;
 import com.chartier.virginie.mynews.utils.DateUtils;
 
 import java.util.List;
@@ -21,12 +21,12 @@ import butterknife.ButterKnife;
 /**
  * Created by Virginie Chartier alias Taiviv on 12/10/2018.
  */
-public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAdapter.ItemViewHolder> {
-    private List<SearchArticle.Doc> mList;
+   /* public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAdapter.ItemViewHolder> {
+    private List<Doc> mList;
     private OnItemClickListener mListener;
     private RequestManager mGlide;
 
-    public SearchActivityAdapter(List<SearchArticle.Doc> docList, RequestManager glide) {
+    public SearchActivityAdapter(List<Doc> docList, RequestManager glide) {
         mList = docList;
         mGlide = glide;
     }
@@ -89,7 +89,7 @@ public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAd
             });
         }
 
-        public void updateWithSearchArticle(SearchArticle.Doc searchArticle, RequestManager glide) {
+        public void updateWithSearchArticle(Doc searchArticle, RequestManager glide) {
 
             this.mTextView.setText(searchArticle.getNewDesk());
             if (searchArticle.getPubDate() != null){
@@ -104,6 +104,6 @@ public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAd
 
         }
     }
-}
+}*/
 
 

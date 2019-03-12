@@ -15,7 +15,6 @@
     <string name="query_error">You must edit a search by query term !</string>
     <string name="box_unchecked">You must select one box !</string>
 
-
     <!-- Option menus title -->
     <string name="image_description">MyNews image</string>
 
@@ -32,9 +31,13 @@
 
     <!-- Notification page -->
     <string name="switch_notifications">Enable notifications (once per day)</string>
+    <string name="default_notification_channel_id">Default channel</string>
+
+    <!-- Notification placeholder -->
+    <string name="text_notification">A new article is available !</string>
 
     <!-- Http requests -->
-    <string name="no_internet">NO INTERNET CONNECTION!
+    <string name="no_internet">NO INTERNET CONNECTION !
         Please refresh the screen </string>
 
 </resources>
