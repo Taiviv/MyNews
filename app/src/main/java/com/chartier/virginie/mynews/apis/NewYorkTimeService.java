@@ -22,7 +22,7 @@ import retrofit2.http.Query;
  * Created by Virginie Chartier alias Taiviv on 19/09/2018.
  */
 public interface NewYorkTimeService {
-    String ApiKey = "3f27c361e7a148be9d2bf9beb0b4e885";
+    String ApiKey = "kIqkAqAeAankzFGYHqqJM9oGeiFjf8mq";
     String BaseUrl = "http://api.nytimes.com/svc/";
     String SearchArticleFl = "fl=web_url,snippet,pub_date,news_desk,multimedia,document_type,type_of_material";
 
