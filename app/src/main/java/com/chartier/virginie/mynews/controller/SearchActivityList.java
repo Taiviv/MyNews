@@ -78,7 +78,7 @@ public class SearchActivityList extends AppCompatActivity {
 
         if (articleFragment == null) {
             // B - Create new main fragment
-            articleFragment = ArticleFragment.newInstanceForResearch(ArticleFragment.SEARCH_POSITION,String.valueOf(3));
+            articleFragment = ArticleFragment.newInstanceForResearch(ArticleFragment.SEARCH_POSITION,"");
             // C - Add it to FrameLayout container
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.activity_search_list_fragment_container, articleFragment)

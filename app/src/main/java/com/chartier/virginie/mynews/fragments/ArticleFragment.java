@@ -3,6 +3,7 @@ package com.chartier.virginie.mynews.fragments;
 import android.content.Intent;
 import android.icu.text.StringSearch;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -58,6 +59,7 @@ public class ArticleFragment extends Fragment {
     private ArticleAdapter mAdapter;
     private NavigationUtils mNavigationUtils = new NavigationUtils();
     private HttpRequest mHttpRequest = new HttpRequest();
+    
 
 
     // FOR DESIGN
@@ -88,6 +90,7 @@ public class ArticleFragment extends Fragment {
 
     public static ArticleFragment newInstanceForResearch(int position, String search){
         ArticleFragment frag = newInstance(position);
+        assert frag.getArguments() != null;
         frag.getArguments().putString(KEY_SEARCH, search);
 
         return frag;
@@ -95,11 +98,12 @@ public class ArticleFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_article, container, false);
         ButterKnife.bind(this,view);
         // We get the index position of the viewPager
+        assert getArguments() != null;
         int position = getArguments().getInt(KEY_POSITION);
         switch (position){
             case TOP_STORIES_POSITION :
@@ -292,6 +296,7 @@ public class ArticleFragment extends Fragment {
         this.mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                assert getArguments() != null;
                 int position = getArguments().getInt(KEY_POSITION);
                 switch (position){
                     case TOP_STORIES_POSITION :
